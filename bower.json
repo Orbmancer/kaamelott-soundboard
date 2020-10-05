@@ -1,16 +1,8 @@
 {
-  "name": "kaamelott-soundboard",
-  "description": "Quelques-unes des meilleures répliques sonores de Kaamelott. C'était ça ou chante Sloubi.",
+  "name": "misterv-soundboard",
+  "description": "Les meilleures punchlines de Mister V",
   "main": "js/app/main.js",
-  "authors": [
-    "Antoine @2ec0b4"
-  ],
   "license": "MIT",
-  "keywords": [
-    "kaamelott",
-    "soundboard"
-  ],
-  "homepage": "https://github.com/2ec0b4/kaamelott-soundboard",
   "private": true,
   "ignore": [
     "**/.*",
