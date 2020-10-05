@@ -1,13 +1,11 @@
 define("app", function(require) {
     "use strict";
 
-    var Marionette              = require("marionette"),
+    var Backbone                = require("backbone"),
+        Marionette              = require("marionette"),
         Radio                   = require("backbone.radio"),
         SoundboardController    = require("controllers/soundboard"),
         app;
-
-    require("css!../../bower_components/ilyabirman-likely/release/likely.css");
-    require("likely");
 
     app = Marionette.Application.extend({
         initialize: function intialize() {
@@ -18,6 +16,8 @@ define("app", function(require) {
 
             Radio.channel("App").reply("region:show", this.showRegion.bind(this));
             Radio.channel("App").reply("modal:show", this.showModal.bind(this));
+            Radio.channel("Sounds").on("sound:play", this.changeUrl.bind(this));
+            Radio.channel("Sounds").on("sound:stop", this.resetUrl.bind(this));
 
             this.router = new Marionette.AppRouter();
 
@@ -36,8 +36,14 @@ define("app", function(require) {
                 Backbone.history.start();
                 this.trigger("backbone:history:start");
             }
+        },
 
-            likely.initiate();
+        changeUrl: function(slug) {
+            this.router.navigate("son/"+slug);
+        },
+
+        resetUrl: function() {
+            this.router.navigate("/");
         },
 
         showRegion: function showRegion(params) {

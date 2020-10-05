@@ -8,16 +8,32 @@ Alors, c'est classe ou c'est pas classe ? Ou c'est classe ?
 
 ## Lancer le projet ##
 
-Pour faire fonctionner le projet sur votre machine, vous devrez tout d'abord, depuis la racine, exécuter la commande `npm install` puis accéder au fichier `index.html` via le serveur Web de votre choix (Apache pour moi, quand je ne suis pas sioux et que je ne m'y prends pas comme un commanche).
+Pour faire fonctionner le projet sur votre machine, vous devrez tout d'abord, depuis la racine, exécuter la commande `bower install` puis accéder au fichier `index.html` via le serveur Web de votre choix (Apache pour moi, quand je ne suis pas sioux et que je ne m'y prends pas comme un commanche). Sinon vous pouvez aussi utiliser [Docker](https://www.docker.com/) avec les commandes suivantes :
+```bash
+make init
+make install
+make start
+```
+(cf. le fichier `Makefile`)
+
+Whoooohoooo woa c'est mortel !
 
 ## Contribuer ##
 
 1. Scissionnez (cf. [Fork](http://bitoduc.fr/#F)) ce dépôt
 2. Créez une nouvelle branche (`git checkout -b sons-qui-envoient-du-pate`)
 3. Ajoutez vos sons (format _mp3_) dans le répertoire `sounds/` et référencez-les dans le fichier `sounds/sounds.json`
-4. Idéalement, vous pouvez [utiliser Audacity pour uniformiser vos sons](https://github.com/2ec0b4/kaamelott-soundboard/blob/master/Audacity/README.md)
-5. Enregistrez les modifications (`git commit -am "Mes sons qui envoient du paté"`)
-6. Poussez vos modifications (`git push origin head`)
-7. Créez une [fusiodemande](https://github.com/2ec0b4/kaamelott-soundboard/pulls)
+4. Enregistrez les modifications (`git commit -am "Mes sons qui envoient du paté"`)
+5. Poussez vos modifications (`git push origin head`)
+6. Créez une [fusiodemande](https://github.com/2ec0b4/kaamelott-soundboard/pulls)
+7. Patientez 😇
+
+## Liens ##
+
+* [Reddit](https://www.reddit.com/r/france/comments/5orvyf/kaamelott_soundboard_3/)
+* [Application iOS](https://github.com/tnducrocq/kaamelott-sound-board-ios)
+* [Visualisation graphique des répliques du _soundboard_](https://github.com/aluriak/kaamelott-soundboard-viz)
+* [Application Android](https://gitlab.com/astran/kaamelottsb) pas encore sur le store mais il y a un [lien pour l'apk de dev](https://gitlab.com/astran/kaamelottsb/-/jobs/artifacts/master/raw/app/build/outputs/apk/debug/app-debug.apk?job=assembleDebug) 
+* [Bot Telegram](https://github.com/klmp200/kaamelott-soundboard-telegram-bot)
 
 Merci, de rien, au revoir m'sieur dame

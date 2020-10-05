@@ -11,18 +11,28 @@ define("models/sound",  function(require) {
             character: "",
             episode: "",
             file: "",
-            playing: false
+            playing: false,
+            selected: false
         },
         play: function() {
             if( !this.audio ) {
                 this.audio = new Audio("sounds/"+this.get("file"));
             }
 
-            this.audio.play();
+            var that    = this,
+                promise = this.audio.play();
+
+            if (promise !== undefined) {
+                promise.then(function(_) {
+                    that.set("playing", true);
+                }).catch(function(error) {
+                });
+            } else {
+                this.set("playing", true);
+            }
+
             this.audio.onended = this.stop.bind(this);
             this.audio.onpause = this.stop.bind(this);
-
-            this.set("playing", true);
         },
         stop: function() {
             if( this.audio && !this.audio.paused ) {

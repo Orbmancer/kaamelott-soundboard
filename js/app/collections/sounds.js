@@ -7,12 +7,21 @@ define("collections/sounds", function(require) {
 
     Sounds = Backbone.Collection.extend({
         model: Sound,
-        url: "/sounds/sounds.json",
+        url: "sounds/sounds.json",
         comparator: function(a, b) {
             var str1 = a.get("title"),
                 str2 = b.get("title");
 
             return str1.localeCompare(str2);
+        },
+        filterByCid: function(cid) {
+            if(cid == "") {
+                return this;
+            }
+
+            return new Sounds(this.filter(function(data) {
+                return data.cid == cid;
+            }));
         },
         filterByTitle: function(search){
             var that    = this,
@@ -24,8 +33,11 @@ define("collections/sounds", function(require) {
 
             pattern     = new RegExp(this.removeDiacritics(search), "gi");
             return new Sounds(this.filter(function(data) {
+                pattern.lastIndex = 0;
+
                 return pattern.test(that.removeDiacritics(data.get("title")))
-                    || pattern.test(that.removeDiacritics(data.get("character")));
+                    || pattern.test(that.removeDiacritics(data.get("character")))
+                    || pattern.test(that.removeDiacritics(data.get("episode")));
             }));
         },
         removeDiacritics: function(str) {
